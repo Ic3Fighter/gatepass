@@ -27,7 +27,7 @@ namespace GatePass.Data.Migrations
                     End = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     LocationName = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    NoteForCustomer = table.Column<string>(type: "longtext", nullable: false)
+                    NoteForCustomer = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     LastUpdatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),

@@ -15,8 +15,4 @@
     <ProjectReference Include="..\GatePass.Data\GatePass.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="BusinessProviders\" />
-  </ItemGroup>
-
 </Project>

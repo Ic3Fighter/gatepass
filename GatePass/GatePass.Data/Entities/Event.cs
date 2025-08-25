@@ -40,17 +40,17 @@ namespace GatePass.Data.Entities
         /// <summary>
         /// An optional custom note for the customer by the organizer.
         /// </summary>
-        public string NoteForCustomer { get; set; }
+        public string? NoteForCustomer { get; set; }
 
         /// <summary>
         /// Automatically set date and time of the event's creation.
         /// </summary>
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         /// <summary>
         /// Date and time of the last update of this entity.
         /// </summary>
-        public DateTime LastUpdatedAt { get; set; }
+        public DateTime LastUpdatedAt { get; set; } = DateTime.Now;
 
         /// <summary>
         /// The current status of the event.
@@ -61,7 +61,7 @@ namespace GatePass.Data.Entities
         /// <summary>
         /// Projected sum of all ticket category's <see cref="TicketCategory.CurrentCount" /> values.
         /// </summary>
-        public virtual int Occupancy => Categories.Sum(x => x.CurrentCount);
+        public int? Occupancy => Categories?.Sum(x => x.CurrentCount);
 
         #region Foreign Keys
 

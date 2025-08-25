@@ -46,7 +46,6 @@ namespace GatePass.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("NoteForCustomer")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("Start")
