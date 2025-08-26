@@ -2,72 +2,49 @@
 @rendermode InteractiveServer
 
 @using GatePass.Business.BusinessProviders
+@using GatePass.Business.BusinessProviders.Entities
 @inject EventBusinessProvider _eventBusinessProvider
 
 <h3>CreateEvent</h3>
 <p>Id is @Id</p>
 
-@if (Loaded == true && Event is not null)
+@if (_loaded == true && _event is not null)
 {
-    <EditForm Model="Event" FormName="CreateEditEvent" OnValidSubmit="ProcessSubmit">
+    <EditForm Model="_event" FormName="CreateEditEvent" OnValidSubmit="ProcessSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
         <label>
             Title:
-            <InputText @bind-Value="Event.Title" />
+            <InputText @bind-Value="_event.Title" />
         </label>
 
         <label>
             Description
-            <InputTextArea @bind-Value="Event.Description" />
+            <InputTextArea @bind-Value="_event.Description" />
         </label>
 
         <label>
             LocationName
-            <InputText @bind-Value="Event.LocationName" />
+            <InputText @bind-Value="_event.LocationName" />
         </label>
 
         <label>
             Startdate
-            <InputDate @bind-Value="Event.Start" />
+            <InputDate @bind-Value="_event.Start" />
         </label>
 
         <label>
             Enddate
-            <InputDate @bind-Value="Event.End" />
+            <InputDate @bind-Value="_event.End" />
         </label>
         <button type="submit">Submit</button>
     </EditForm>
 }
-else if (Loaded == true && Event is null)
+else if (_loaded == true && _event is null)
 {
     <p>not found</p>
 }
 else
 {
     <p><em>Loading...</em></p>
-}
-
-@code {
-    [Parameter]
-    public Guid? Id { get; set; }
-
-    public Data.Entities.Event? Event;
-
-    public bool Loaded = false;
-
-    protected override async Task OnInitializedAsync()
-    {
-        if (Id.HasValue) Event = await _eventBusinessProvider.GetAsync(Id.Value); // load existing
-        else Event = new(); // create new
-
-        Loaded = true;
-    }
-
-    private async Task ProcessSubmit(EditContext args)
-    {
-        // Event.LastUpdatedAt = DateTime.Now;
-        await _eventBusinessProvider.AddAsync(Event);
-        _eventBusinessProvider.SaveChanges();
-    }
 }

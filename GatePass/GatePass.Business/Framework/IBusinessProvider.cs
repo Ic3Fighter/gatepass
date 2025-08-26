@@ -1,4 +1,4 @@
-﻿namespace GatePass.Core.Framework
+﻿namespace GatePass.Business.Framework
 {
     public interface IBusinessProvider { }
 }

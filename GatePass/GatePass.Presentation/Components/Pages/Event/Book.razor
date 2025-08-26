@@ -1,0 +1,44 @@
+﻿@page "/book/{id:guid?}"
+@rendermode InteractiveServer
+
+@using GatePass.Business.BusinessProviders
+@using GatePass.Business.BusinessProviders.Entities
+@using GatePass.Data.Entities
+
+@inject EventBusinessProvider _eventBusinessProvider
+@inject SaleBusinessProvider _saleBusinessProvider;
+
+@if (_event is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h3>@_event.Title</h3>
+    <p>Book now for this event</p>
+
+    <EditForm FormName="EventBooking" Model="_ticket" OnValidSubmit="ProcessSubmit">
+        <fieldset>
+            <legend>Price Category</legend>
+            <InputRadioGroup @bind-Value="_ticket.TicketCategoryId">
+                @foreach (var category in _event.Categories)
+                {
+                    <label>
+                        <InputRadio Value="category.Id" />
+                        @category.Name
+                    </label>
+                }
+            </InputRadioGroup>
+        </fieldset>
+
+        <div>
+            <label for="name">Name</label>
+            <InputText @bind-Value="_ticket.CustomerName" id="name" />
+        </div>
+        <div>
+            <label for="email">Email address (optional)</label>
+            <InputText @bind-Value="_ticket.CustomerEmail" id="email" type="email" />
+        </div>
+        <button type="submit">Submit</button>
+    </EditForm>
+}

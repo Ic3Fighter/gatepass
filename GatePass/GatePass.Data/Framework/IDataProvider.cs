@@ -1,4 +1,4 @@
-﻿namespace GatePass.Core.Framework
+﻿namespace GatePass.Data.Framework
 {
     public interface IDataProvider { }
 }

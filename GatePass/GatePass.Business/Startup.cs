@@ -1,4 +1,4 @@
-﻿using GatePass.Core.Framework;
+﻿using GatePass.Business.Framework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;

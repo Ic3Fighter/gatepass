@@ -1,0 +1,36 @@
+﻿@page "/event/{eventid:guid}/category/{id:guid?}"
+@rendermode InteractiveServer
+
+@using GatePass.Business.BusinessProviders
+@using GatePass.Business.BusinessProviders.Entities
+@using GatePass.Data.Entities
+@inject EventBusinessProvider _eventBusinessProvider
+@inject TicketCategoryBusinessProvider _ticketCategoryBusinessProvider
+
+<h3>Ticket Category</h3>
+<p>Create a new pricing category for event <em>@_event?.Title</em></p>
+
+@if (_category is not null)
+{
+    <EditForm FormName="CreateCategory" Model="_category" OnValidSubmit="ProcessSubmit">
+        <ValidationSummary />
+
+        <div>
+            <label for="name">Name</label>
+            <InputText @bind-Value="_category.Name" id="name" />
+        </div>
+        <div>
+            <label for="note">Note to customer (optional)</label>
+            <InputText @bind-Value="_category.NoteForCustomer" id="note" />
+        </div>
+        <div>
+            <label for="capacity">Capacity</label>
+            <InputNumber @bind-Value="_category.Capacity" id="capacity" />
+        </div>
+        <div>
+            <label for="price">Ticket Price</label>
+            <InputNumber @bind-Value="_category.Price" id="price" />
+        </div>
+        <button type="submit">Submit</button>
+    </EditForm>
+}

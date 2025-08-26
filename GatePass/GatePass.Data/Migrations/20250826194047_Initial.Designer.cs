@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GatePass.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250825175442_Initial")]
+    [Migration("20250826194047_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -21,6 +21,9 @@ namespace GatePass.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "9.0.8")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -49,7 +52,6 @@ namespace GatePass.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("NoteForCustomer")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("Start")
@@ -160,7 +162,6 @@ namespace GatePass.Data.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("NoteForCustomer")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<float>("Price")

@@ -26,7 +26,7 @@ namespace GatePass.Data.Entities
         /// <summary>
         /// A free-text note for the customer by the organizer.
         /// </summary>
-        public string NoteForCustomer { get; set; }
+        public string? NoteForCustomer { get; set; }
 
         /// <summary>
         /// The projected price of the ticket category.

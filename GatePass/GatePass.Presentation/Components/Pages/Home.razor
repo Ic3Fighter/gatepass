@@ -1,5 +1,30 @@
 ﻿@page "/"
+@using GatePass.Business.BusinessProviders
+@using GatePass.Business.BusinessProviders.Entities
+
+@inject EventBusinessProvider _eventBusinessProvider
 
 <PageTitle>Home</PageTitle>
 
 <h1>Welcome to your new app</h1>
+
+@if (_events is null)
+{
+    <p><em>Loading events...</em></p>
+}
+else
+{
+    @foreach (var ev in _events)
+    {
+        <article>
+            <h2>@ev.Title</h2>
+            <p>
+                @ev.Description
+            </p>
+            <p>
+                @ev.LocationName - <time datetime="@ev.Start.ToString("u")">@ev.Start.ToString("f")</time>
+            </p>
+            <a href="/book/@ev.Id">Book now</a>
+        </article>
+    }
+}

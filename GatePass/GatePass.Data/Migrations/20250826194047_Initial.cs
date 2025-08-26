@@ -68,7 +68,7 @@ namespace GatePass.Data.Migrations
                     Name = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    NoteForCustomer = table.Column<string>(type: "longtext", nullable: false)
+                    NoteForCustomer = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Price = table.Column<float>(type: "float", nullable: false),
                     Capacity = table.Column<int>(type: "int", nullable: false),

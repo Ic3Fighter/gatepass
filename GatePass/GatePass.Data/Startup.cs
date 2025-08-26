@@ -1,4 +1,4 @@
-﻿using GatePass.Core.Framework;
+﻿using GatePass.Data.Framework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -24,7 +24,8 @@ namespace GatePass.Data
             services.AddDbContext<DatabaseContext>(options =>
             {
                 var connectionString = configuration.GetConnectionString("GatePassDb");
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)); // TODO lookup lazy loading
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+                options.UseLazyLoadingProxies();
             });
         }
 
