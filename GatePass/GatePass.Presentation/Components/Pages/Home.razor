@@ -1,8 +1,7 @@
 ﻿@page "/"
-@using GatePass.Business.BusinessProviders
 @using GatePass.Business.BusinessProviders.Entities
 
-@inject EventBusinessProvider _eventBusinessProvider
+@inject EventBusinessProvider EventBusinessProvider
 
 <PageTitle>Home</PageTitle>
 
@@ -24,7 +23,10 @@ else
             <p>
                 @ev.LocationName - <time datetime="@ev.Start.ToString("u")">@ev.Start.ToString("f")</time>
             </p>
-            <a href="/book/@ev.Id">Book now</a>
+            <div>
+                <a href="/event/@ev.Id/booking">Book now</a>
+                <a href="/event/@ev.Id">Edit event</a>
+            </div>
         </article>
     }
 }

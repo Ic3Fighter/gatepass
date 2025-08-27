@@ -4,9 +4,9 @@ namespace GatePass.Presentation.Components.Pages
     {
         private IList<Data.Entities.Event>? _events;
 
-        protected async override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            _events = await _eventBusinessProvider.GetAllAsync();
+            _events = await EventBusinessProvider.GetAllAsync();
         }
     }
 }

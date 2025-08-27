@@ -13,7 +13,7 @@ namespace GatePass.Presentation.Components.Pages.Event
         private Data.Entities.Event? _event;
         private TicketCategory? _category;
 
-        protected async override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             // make async
             _event = await _eventBusinessProvider.GetAsync(EventId);

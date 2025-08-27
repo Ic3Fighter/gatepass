@@ -1,9 +1,9 @@
 ﻿@page "/event/{id:guid?}"
 @rendermode InteractiveServer
 
-@using GatePass.Business.BusinessProviders
 @using GatePass.Business.BusinessProviders.Entities
-@inject EventBusinessProvider _eventBusinessProvider
+@inject EventBusinessProvider EventBusinessProvider
+@inject NavigationManager NavigationManager
 
 <h3>CreateEvent</h3>
 <p>Id is @Id</p>

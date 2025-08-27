@@ -1,0 +1,32 @@
+﻿@page "/ticket/{id:guid}"
+@using GatePass.Business.BusinessProviders.Entities
+@using GatePass.Core.Enums
+
+@inject TicketBusinessProvider TicketBusinessProvider
+
+@if (_ticket is null)
+{
+    <PageTitle>Ticket Details</PageTitle>
+    <p><em>Loading ticket information...</em></p>
+}
+else
+{
+    <PageTitle>Ticket for @_ticket.CustomerName</PageTitle>
+    <h3>Ticket for @_ticket.CustomerName</h3>
+    <p>Ticket reserved at @_ticket.PurchasedAt.ToString("f") for @_ticket.TicketCategory.Price</p>
+
+    @if (_ticket.Status >= TicketStatus.Used)
+    {
+        <p>Validation has expired.</p>
+    }
+    else
+    {
+        <p>Still valid for entry.</p>
+    }
+
+    <details>
+        <summary>Customer Information</summary>
+        <p>Name: @_ticket.CustomerName</p>
+        <p>Email address: @(string.IsNullOrEmpty(_ticket.CustomerEmail) ? "not provided" : _ticket.CustomerEmail)</p>
+    </details>
+}

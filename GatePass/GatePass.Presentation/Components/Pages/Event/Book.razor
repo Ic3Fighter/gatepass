@@ -1,12 +1,12 @@
-﻿@page "/book/{id:guid?}"
+﻿@page "/event/{id:guid}/booking"
 @rendermode InteractiveServer
 
 @using GatePass.Business.BusinessProviders
 @using GatePass.Business.BusinessProviders.Entities
-@using GatePass.Data.Entities
 
-@inject EventBusinessProvider _eventBusinessProvider
-@inject SaleBusinessProvider _saleBusinessProvider;
+@inject NavigationManager NavigationManager
+@inject EventBusinessProvider EventBusinessProvider
+@inject SaleBusinessProvider SaleBusinessProvider;
 
 @if (_event is null)
 {

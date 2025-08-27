@@ -14,15 +14,22 @@ namespace GatePass.Presentation.Components.Pages.Event
 
         protected override async Task OnInitializedAsync()
         {
-            _event = Id.HasValue ? await _eventBusinessProvider.GetAsync(Id.Value) : new();
+            _event = Id.HasValue ? await EventBusinessProvider.GetAsync(Id.Value) : new();
             _loaded = true;
         }
 
         private async Task ProcessSubmit(EditContext args)
         {
+            // set update date
             _event.LastUpdatedAt = DateTime.Now;
-            await _eventBusinessProvider.AddAsync(_event);
-            _eventBusinessProvider.SaveChanges();
+
+            // send to db
+            if (Id.HasValue) _event = await EventBusinessProvider.UpdateAsync(_event);
+            else _event = await EventBusinessProvider.AddAsync(_event);
+            EventBusinessProvider.SaveChanges();
+
+            // navigate to new page
+            NavigationManager.NavigateTo("/");
         }
     }
 }
