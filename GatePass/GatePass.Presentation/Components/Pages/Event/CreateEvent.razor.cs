@@ -1,3 +1,4 @@
+using GatePass.Business.BusinessProviders.Entities;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 
@@ -5,12 +6,15 @@ namespace GatePass.Presentation.Components.Pages.Event
 {
     public partial class CreateEvent
     {
+        [Inject] public EventBusinessProvider EventBusinessProvider { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
+
         [Parameter]
         public Guid? Id { get; set; }
 
         private Data.Entities.Event? _event;
 
-        private bool _loaded = false;
+        private bool _loaded;
 
         protected override async Task OnInitializedAsync()
         {

@@ -1,46 +1,55 @@
 ﻿@page "/event/{id:guid?}"
 @rendermode InteractiveServer
 
-@using GatePass.Business.BusinessProviders.Entities
-@inject EventBusinessProvider EventBusinessProvider
-@inject NavigationManager NavigationManager
 
 <h3>CreateEvent</h3>
 <p>Id is @Id</p>
 
-@if (_loaded == true && _event is not null)
+@if (_loaded && _event is not null)
 {
     <EditForm Model="_event" FormName="CreateEditEvent" OnValidSubmit="ProcessSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
-        <label>
-            Title:
-            <InputText @bind-Value="_event.Title" />
-        </label>
-
-        <label>
-            Description
-            <InputTextArea @bind-Value="_event.Description" />
-        </label>
-
-        <label>
-            LocationName
-            <InputText @bind-Value="_event.LocationName" />
-        </label>
-
-        <label>
-            Startdate
-            <InputDate @bind-Value="_event.Start" />
-        </label>
-
-        <label>
-            Enddate
-            <InputDate @bind-Value="_event.End" />
-        </label>
+        <div>
+            <label>
+                Title:
+                <InputText @bind-Value="_event.Title" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Description
+                <InputTextArea @bind-Value="_event.Description" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Organizer
+                <InputText @bind-Value="_event.Organizer" />
+            </label>
+        </div>
+        <div>
+            <label>
+                LocationName
+                <InputText @bind-Value="_event.LocationName" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Startdate
+                <InputDate @bind-Value="_event.Start" />
+            </label>
+        </div>
+        <div>
+            <label>
+                Enddate
+                <InputDate @bind-Value="_event.End" />
+            </label>
+        </div>
         <button type="submit">Submit</button>
     </EditForm>
 }
-else if (_loaded == true && _event is null)
+else if (_loaded && _event is null)
 {
     <p>not found</p>
 }

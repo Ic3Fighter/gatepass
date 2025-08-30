@@ -1,8 +1,7 @@
 ﻿@page "/ticket/{id:guid}"
-@using GatePass.Business.BusinessProviders.Entities
-@using GatePass.Core.Enums
+@rendermode InteractiveServer
 
-@inject TicketBusinessProvider TicketBusinessProvider
+@using GatePass.Core.Enums
 
 @if (_ticket is null)
 {
@@ -29,4 +28,6 @@ else
         <p>Name: @_ticket.CustomerName</p>
         <p>Email address: @(string.IsNullOrEmpty(_ticket.CustomerEmail) ? "not provided" : _ticket.CustomerEmail)</p>
     </details>
+
+    <a href="/ticket/@_ticket.Id/download" target="_blank">Download ticket</a>
 }

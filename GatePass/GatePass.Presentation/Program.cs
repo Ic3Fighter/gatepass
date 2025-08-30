@@ -15,6 +15,8 @@ builder.Services.AddRazorComponents()
 builder.Services.AddBusiness();
 builder.Services.AddData(builder.Configuration);
 
+builder.Services.AddControllers();
+
 #endregion
 
 var app = builder.Build();
@@ -46,6 +48,8 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(typeof(GatePass.Presentation.Client._Imports).Assembly);
+
+app.MapControllers();
 
 #endregion
 

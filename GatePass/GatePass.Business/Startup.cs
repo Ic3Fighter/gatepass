@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using QuestPDF.Infrastructure;
 
 namespace GatePass.Business
 {
@@ -17,6 +18,9 @@ namespace GatePass.Business
             {
                 services.AddScoped(type);
             }
+
+            // configure license for pdf generator
+            QuestPDF.Settings.License = LicenseType.Community;
         }
 
         public static void UseBusiness(this IApplicationBuilder app) { }

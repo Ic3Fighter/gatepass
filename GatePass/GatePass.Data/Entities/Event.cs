@@ -23,6 +23,11 @@ namespace GatePass.Data.Entities
         public string Description { get; set; }
 
         /// <summary>
+        /// Person or group to organize the event.
+        /// </summary>
+        public string Organizer { get; set; }
+
+        /// <summary>
         /// The exact starting day and time of the event.
         /// </summary>
         public DateTime Start { get; set; }
